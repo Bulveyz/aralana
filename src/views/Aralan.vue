@@ -11,9 +11,16 @@
                     ></v-text-field>
                 </v-flex>
                 </v-layout>
-                <v-list three-line>
+                <v-list class="custom-doctor-list" two-line>
+                    <transition-group
+                            name="staggered-fade"
+                            v-bind:css="false"
+                            v-on:before-enter="beforeEnter"
+                            v-on:enter="enter"
+                            v-on:leave="leave"
+                    >
                     <template v-for="(doctor, index) in filteredList">
-                        <v-list-tile>
+                        <v-list-tile class="mb-3 elevation-1" :key="index">
                             <v-list-tile-content>
                                 <v-list-tile-title v-html="doctor.title"></v-list-tile-title>
                                 <v-list-tile-sub-title v-html="doctor.subtitle"></v-list-tile-sub-title>
@@ -21,6 +28,7 @@
                             <v-btn color="primary">Записаться</v-btn>
                         </v-list-tile>
                     </template>
+                    </transition-group>
                 </v-list>
             </v-container>
         </v-app>
@@ -43,50 +51,81 @@
                 ],
                 doctors: [
                     {
-                        title: 'Dermatologists',
-                        subtitle: "Have problems with your skin, hair, nails? Do you have moles, scars, acne, or skin allergies? Dermatologists can help."
+                        title: 'Эндокринолог',
+                        subtitle: "Запись только по направлению."
                     },
                     {
-                        title: 'Endocrinologists',
-                        subtitle: "These are experts on hormones and metabolism. They can treat conditions like diabetes, thyroid problems, infertility, and calcium and bone disorders."
+                        title: 'Педиатор',
+                        subtitle: "Свободная запись."
                     },
                     {
-                        title: 'Emergency Medicine Specialists',
-                        subtitle: "These doctors make life-or-death decisions for sick and injured people, usually in an emergency room. Their job is to save lives and to avoid or lower the chances of disability."
+                        title: 'Хиррург',
+                        subtitle: "Свободная запись."
                     },
                     {
-                        title: 'Family Physicians',
-                        subtitle: "They care for the whole family, including children, adults, and the elderly. They do routine checkups and screening tests, give you flu and immunization shots, and manage diabetes and other ongoing medical conditions."
+                        title: 'Артопед',
+                        subtitle: "Свободная запись."
                     },
                     {
-                        title: 'Gastroenterologists',
-                        subtitle: "They’re specialists in digestive organs, including the stomach, bowels, pancreas, liver, and gallbladder. You might see them for abdominal pain, ulcers, diarrhea, jaundice, or cancers in your digestive organs."
+                        title: 'Невролог',
+                        subtitle: "Свободная запись."
                     },
                     {
-                        title: 'Geriatric Medicine Specialists',
-                        subtitle: "These doctors care for the elderly. They can treat people in their homes, doctors' offices, nursing homes, assisted-living centers, and hospitals."
+                        title: 'Окулист',
+                        subtitle: "Запись только по направлению."
                     },
                     {
-                        title: 'Allergists/Immunologists',
-                        subtitle: "They treat immune system disorders such as asthma, eczema, food allergies, insect sting allergies, and some autoimmune diseases."
+                        title: 'Терапевт',
+                        subtitle: "Свободная запись."
                     },
                     {
-                        title: 'Anesthesiologists',
-                        subtitle: "These doctors give you drugs to numb your pain or to put you under during surgery, childbirth, or other procedures. They monitor your vital signs while you’re under anesthesia."
+                        title: 'Уролог',
+                        subtitle: "Свободная запись."
                     },
                     {
-                        title: 'Cardiologists',
-                        subtitle: "They’re experts on the heart and blood vessels. You might see them for heart failure, a heart attack, high blood pressure, or an irregular heartbeat."
+                        title: 'Офтальмолог',
+                        subtitle: "Свободная запись."
                     },
                     {
-                        title: 'Colon and Rectal Surgeons',
-                        subtitle: "You would see these doctors for problems with your small intestine, colon, and bottom. They can treat colon cancer, hemorrhoids, and inflammatory bowel disease. They also can do a colonoscopy and other tests for colon cancer."
+                        title: 'Отоларинголог',
+                        subtitle: "Свободная запись."
                     },
                     {
-                        title: 'Critical Care Medicine Specialists',
-                        subtitle: "They care for people who are critically ill or injured. You might see them if your heart or other organs are failing or if you’ve been in an accident."
-                    }
+                        title: 'Фтизиатр',
+                        subtitle: "Свободная запись."
+                    },
+                    {
+                        title: 'Психотерапевт',
+                        subtitle: "Запись только по направлению."
+                    },
                 ]
+            }
+        },
+        methods: {
+            beforeEnter: function (el) {
+                el.style.opacity = 0
+                el.style.height = 0
+                el.style.overflowY = 'hidden'
+            },
+            enter: function (el, done) {
+                var delay = el.dataset.index * 150
+                setTimeout(function () {
+                    Velocity(
+                        el,
+                        { opacity: 1, height: '72px' },
+                        { complete: done }
+                    )
+                }, delay)
+            },
+            leave: function (el, done) {
+                var delay = el.dataset.index * 150
+                setTimeout(function () {
+                    Velocity(
+                        el,
+                        { opacity: 0, height: 0 },
+                        { complete: done }
+                    )
+                }, delay)
             }
         },
         computed: {
@@ -99,5 +138,12 @@
     }
 </script>
 
-<style scoped>
+<style>
+    .v-list.custom-doctor-list {
+        background: transparent !important;
+    }
+
+    .v-list.custom-doctor-list > div {
+        background-color: #fff !important;
+    }
 </style>
