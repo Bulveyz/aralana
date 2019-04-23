@@ -1,16 +1,9 @@
 <template>
     <v-container>
        
-        <v-list three-line>
-            <transition-group
-                    name="staggered-fade"
-                    v-bind:css="false"
-                    v-on:before-enter="beforeEnter"
-                    v-on:enter="enter"
-                    v-on:leave="leave"
-            >
+        <v-list three-line class="custom-doctor-list">
                 <template v-for="(records, index) in records">
-                    <v-list-tile class="mb-4" :key="index">
+                    <v-list-tile class="mb-4 elevation-1" :key="index">
                         <v-list-tile-content>
                             <v-list-tile-title v-html="records.title"></v-list-tile-title>
                             <v-list-tile-sub-title v-html="records.subtitle"></v-list-tile-sub-title>
@@ -19,7 +12,6 @@
                         <v-btn color="info">Подробнее</v-btn>
                     </v-list-tile>
                 </template>
-            </transition-group>
         </v-list>
     </v-container>
 </template>

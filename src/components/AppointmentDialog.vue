@@ -12,7 +12,7 @@
                 <v-card-title
                         class="headline primary white--text"
                 >
-                    Запись к {{doctor.title}}
+                    Запись к {{doctor.title.toLowerCase()}}у
                 </v-card-title>
 
 
@@ -73,8 +73,8 @@
                                 full-width
                         >
                             <v-spacer></v-spacer>
-                            <v-btn flat color="primary" @click="modalTimePicker = false">Cancel</v-btn>
-                            <v-btn flat color="primary" @click="$refs.dialog.save(time)">OK</v-btn>
+                            <v-btn flat color="primary" @click="modalTimePicker = false">Отмена</v-btn>
+                            <v-btn flat color="primary" @click="$refs.dialog.save(time)">Выбрать</v-btn>
                         </v-time-picker>
                     </v-dialog>
                 </v-card-text>
@@ -93,7 +93,7 @@
                     <v-btn
                             color="primary"
                             flat
-                            @click="dialog = false"
+                            @click="appointment"
                     >
                         Записаться
                     </v-btn>
@@ -128,6 +128,14 @@
             }
         },
         methods: {
+            appointment() {
+                this.dialog = false;
+                Event.fire('appointment', {
+                    doctor: this.doctor,
+                    date: this.date,
+                    time: this.time
+                })
+            },
             disabledDates() {
                 return val => this.disabledDatesArray.indexOf(val) == -1
             },

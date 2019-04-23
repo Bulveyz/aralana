@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Doctors from "./views/Doctors";
 import MyAppointment from "./views/MyAppointment";
+import Profile from "./views/Profile";
 
 
 Vue.use(Router)
@@ -20,6 +21,11 @@ export default new Router({
       path: '/my-appointment',
       name: 'appointment',
       component: MyAppointment
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: Profile
     }
   ]
 })

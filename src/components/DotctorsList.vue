@@ -20,7 +20,7 @@
                 <template v-for="(doctor, index) in filteredList">
                     <v-list-tile class="mb-3 elevation-1" :key="index">
                         <v-list-tile-content>
-                            <v-list-tile-title v-html="doctor.title"></v-list-tile-title>
+                            <v-list-tile-title class="font-weight-bold" v-html="doctor.title"></v-list-tile-title>
                             <v-list-tile-sub-title v-html="doctor.subtitle"></v-list-tile-sub-title>
                         </v-list-tile-content>
                         <appointment-dialog :doctor="doctor"></appointment-dialog>
