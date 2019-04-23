@@ -23,7 +23,7 @@
                             <v-list-tile-title v-html="doctor.title"></v-list-tile-title>
                             <v-list-tile-sub-title v-html="doctor.subtitle"></v-list-tile-sub-title>
                         </v-list-tile-content>
-                        <v-btn color="primary">Записаться</v-btn>
+                        <appointment-dialog :doctor="doctor"></appointment-dialog>
                     </v-list-tile>
                 </template>
             </transition-group>
@@ -32,18 +32,13 @@
 </template>
 
 <script>
+    import AppointmentDialog from "./AppointmentDialog";
     export default {
         name: "DotctorsList",
+        components: {AppointmentDialog},
         data() {
             return {
                 search: '',
-                header: [
-                    {
-                        title: 'doctors (100g serving)',
-                        align: 'left',
-                        subtitle: 'subtitle'
-                    }
-                ],
                 doctors: [
                     {
                         title: 'Эндокринолог',
