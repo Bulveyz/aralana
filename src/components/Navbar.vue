@@ -5,7 +5,7 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-sm-and-down">
-            <v-menu offset-y class="mr-3" :nudge-width="100">
+            <v-menu left offset-y class="mr-3" :nudge-width="100">
                 <template slot='activator'>
                     <v-toolbar-title>
                         <v-badge class="d-flex custom-badge" left color="pink accent-3">
@@ -17,8 +17,15 @@
                     </v-toolbar-title>
                 </template>
 
-                <v-list>
-
+                <v-list two-line>
+                    <template v-for="(records, index) in records">
+                        <v-list-tile :key="index">
+                            <v-list-tile-content>
+                                <v-list-tile-title v-html="records.title"></v-list-tile-title>
+                                <v-list-tile-sub-title v-html="records.subtitle"></v-list-tile-sub-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
+                    </template>
                 </v-list>
             </v-menu>
             <v-btn to="/" flat>Записаться</v-btn>
@@ -32,7 +39,21 @@
         name: "Navbar",
         data() {
             return {
-                notification: false
+                notification: false,
+                records: [
+                    {
+                        title: 'Запись',
+                        subtitle: "<span class='text--primary'>Сегодня в 09:30</span> &mdash; запись к эндокринологу"
+                    },
+                    {
+                        title: 'Запись одобрена',
+                        subtitle: "<span class='text--primary'>Ваша заявка одобрена</span> &mdash; завтра в 09:30 запись к эндокринологу"
+                    },
+                    {
+                        title: 'Заявка принята',
+                        subtitle: "<span class='text--primary'>Ваша заявка принята</span> &mdash; запись к эндокринологу"
+                    }
+                ]
             }
         }
     }
