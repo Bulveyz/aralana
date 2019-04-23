@@ -1,6 +1,8 @@
 <template>
     <v-toolbar dark color="primary">
-        <v-toolbar-title color="white">Doctor Pointer</v-toolbar-title>
+        <v-toolbar-title color="white">
+            Doctor Pointer
+        </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-sm-and-down">
             <v-menu left offset-y class="mr-3" :nudge-width="100">
@@ -26,7 +28,8 @@
                     </template>
                 </v-list>
             </v-menu>
-            <v-btn flat>Мои записи</v-btn>
+            <v-btn to="/" flat>Записаться</v-btn>
+            <v-btn to="/my-appointment" flat>Мои записи</v-btn>
         </v-toolbar-items>
     </v-toolbar>
 </template>
