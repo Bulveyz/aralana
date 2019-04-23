@@ -50,7 +50,6 @@ export default {
       items: [
         { title: 'Home', icon: 'dashboard' },
         { title: 'Records', icon: 'question_answer' },
-        { title: 'Doctors list', icon: 'question_answer'},
         { title: 'About', icon: 'question_answer' }
       ],
       right: null
