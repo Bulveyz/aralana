@@ -17,12 +17,12 @@
                     </v-toolbar-title>
                 </template>
 
-                <v-list>
-                    <template v-for="(record, index) in record">
-                        <v-list-tile>
+                <v-list two-line>
+                    <template v-for="(records, index) in records">
+                        <v-list-tile :key="index">
                             <v-list-tile-content>
-                                <v-list-tile-title v-html="record.title"></v-list-tile-title>
-                                <v-list-tile-sub-title v-html="record.subtitle"></v-list-tile-sub-title>
+                                <v-list-tile-title v-html="records.title"></v-list-tile-title>
+                                <v-list-tile-sub-title v-html="records.subtitle"></v-list-tile-sub-title>
                             </v-list-tile-content>
                         </v-list-tile>
                     </template>
@@ -40,17 +40,17 @@
         data() {
             return {
                 notification: false,
-                record: [
+                records: [
                     {
                         title: 'Запись',
                         subtitle: "<span class='text--primary'>Сегодня в 09:30</span> &mdash; запись к эндокринологу"
                     },
                     {
-                        title: 'Запись',
+                        title: 'Запись одобрена',
                         subtitle: "<span class='text--primary'>Ваша заявка одобрена</span> &mdash; завтра в 09:30 запись к эндокринологу"
                     },
                     {
-                        title: 'Запись',
+                        title: 'Заявка принята',
                         subtitle: "<span class='text--primary'>Ваша заявка принята</span> &mdash; запись к эндокринологу"
                     }
                 ]
