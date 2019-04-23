@@ -1,44 +1,39 @@
 <template>
-    <div id="app">
-        <v-app id="inspire">
-            <v-container>
-                <v-layout row wrap>
-                <v-flex xs5 >
-                    <v-text-field
-                            label="Поиск врача"
-                            v-model="search"
-                            append-outer-icon="search"
-                    ></v-text-field>
-                </v-flex>
-                </v-layout>
-                <v-list class="custom-doctor-list" two-line>
-                    <transition-group
-                            name="staggered-fade"
-                            v-bind:css="false"
-                            v-on:before-enter="beforeEnter"
-                            v-on:enter="enter"
-                            v-on:leave="leave"
-                    >
-                    <template v-for="(doctor, index) in filteredList">
-                        <v-list-tile class="mb-3 elevation-1" :key="index">
-                            <v-list-tile-content>
-                                <v-list-tile-title v-html="doctor.title"></v-list-tile-title>
-                                <v-list-tile-sub-title v-html="doctor.subtitle"></v-list-tile-sub-title>
-                            </v-list-tile-content>
-                            <v-btn color="primary">Записаться</v-btn>
-                        </v-list-tile>
-                    </template>
-                    </transition-group>
-                </v-list>
-            </v-container>
-        </v-app>
-    </div>
+    <v-container>
+        <v-layout row wrap>
+            <v-flex xs5 >
+                <v-text-field
+                        label="Поиск врача"
+                        v-model="search"
+                        append-outer-icon="search"
+                ></v-text-field>
+            </v-flex>
+        </v-layout>
+        <v-list class="custom-doctor-list" two-line>
+            <transition-group
+                    name="staggered-fade"
+                    v-bind:css="false"
+                    v-on:before-enter="beforeEnter"
+                    v-on:enter="enter"
+                    v-on:leave="leave"
+            >
+                <template v-for="(doctor, index) in filteredList">
+                    <v-list-tile class="mb-3 elevation-1" :key="index">
+                        <v-list-tile-content>
+                            <v-list-tile-title v-html="doctor.title"></v-list-tile-title>
+                            <v-list-tile-sub-title v-html="doctor.subtitle"></v-list-tile-sub-title>
+                        </v-list-tile-content>
+                        <v-btn color="primary">Записаться</v-btn>
+                    </v-list-tile>
+                </template>
+            </transition-group>
+        </v-list>
+    </v-container>
 </template>
 
 <script>
     export default {
-        name: "Aralan",
-
+        name: "DotctorsList",
         data() {
             return {
                 search: '',
