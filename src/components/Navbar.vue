@@ -102,8 +102,8 @@
             Event.listen('appointment', (paylaod) => {
 
                 this.records.unshift({
-                    title: 'Запись',
-                    subtitle: 'Запись к ' + paylaod.doctor.title.toLowerCase() + 'у',
+                    title: paylaod.action,
+                    subtitle: paylaod.action + ' к ' + paylaod.doctor.title.toLowerCase() + 'у',
                     status: 'await'
                 });
                 this.notification = true;

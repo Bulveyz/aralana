@@ -133,7 +133,8 @@
                 Event.fire('appointment', {
                     doctor: this.doctor,
                     date: this.date,
-                    time: this.time
+                    time: this.time,
+                    action: 'Запись'
                 })
             },
             disabledDates() {

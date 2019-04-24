@@ -24,6 +24,7 @@ window.Event = new Event();
 
 window.moment = require('moment');
 moment = require('moment-business-days');
+moment.locale('ru');
 
 Vue.config.productionTip = false
 
